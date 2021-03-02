@@ -6,6 +6,16 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+
+  TextEditingController _calcLitros = TextEditingController();
+  TextEditingController _calcQuant = TextEditingController();
+
+  void exibirResult(){
+    print("valor digitado " + _calcQuant.text);
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +38,8 @@ class _PageHomeState extends State<PageHome> {
         ),
         child: ListView(
           children: <Widget>[
-            TextFormField(
+            TextField(
+              controller: _calcLitros,
               cursorColor: Colors.white,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -38,10 +49,10 @@ class _PageHomeState extends State<PageHome> {
                       color: Colors.white
                   ),
                 ),
-                hintText: "Litros",
+                hintText: "Litros ex.: 1,5",
                 hintStyle: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 18,
                   fontWeight: FontWeight.w400,
                 ),
               ),
@@ -52,7 +63,8 @@ class _PageHomeState extends State<PageHome> {
             SizedBox(
               height: 30,
             ),
-            TextFormField(
+            TextField(
+              controller: _calcQuant,
               cursorColor: Colors.white,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -62,7 +74,7 @@ class _PageHomeState extends State<PageHome> {
                       color: Colors.white
                   ),
                 ),
-                hintText: "Quantidade por galão",
+                hintText: "Quatidade de Garrafas",
                 hintStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
@@ -74,7 +86,7 @@ class _PageHomeState extends State<PageHome> {
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Container(
               height: 50,
@@ -99,6 +111,9 @@ class _PageHomeState extends State<PageHome> {
                         ),
                       ],
                     ),
+                  onPressed: (){
+                      exibirResult();
+                  },
                 ),
               ),
 
