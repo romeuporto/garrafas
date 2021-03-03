@@ -12,12 +12,14 @@ class _PageHomeState extends State<PageHome> {
   TextEditingController _calcQuant = TextEditingController();
 
 
-
   void exibirResult() {
-    var listBals = _calcQuant.text;
-    listBals.split(",");
+    var result = _calcQuant.text;
     print("Digitado " + _calcQuant.text);
+    bottleList = result.split(",").cast<double>();
+    bottleList.sort((a, b) => b.compareTo(a));
   }
+
+  List<double> bottleList = [];
 
 
   @override
