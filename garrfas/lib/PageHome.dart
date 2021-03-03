@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:garrfas/Result.dart';
 
 class PageHome extends StatefulWidget {
   @override
@@ -10,9 +11,12 @@ class _PageHomeState extends State<PageHome> {
   TextEditingController _calcLitros = TextEditingController();
   TextEditingController _calcQuant = TextEditingController();
 
-  void exibirResult(){
-    print("valor digitado " + _calcQuant.text);
 
+
+  void exibirResult() {
+    var listBals = _calcQuant.text;
+    listBals.split(",");
+    print("Digitado " + _calcQuant.text);
   }
 
 
@@ -113,10 +117,15 @@ class _PageHomeState extends State<PageHome> {
                     ),
                   onPressed: (){
                       exibirResult();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (contexte) => Result()
+                          )
+                      );
                   },
                 ),
               ),
-
             ),
           ],
         ),
