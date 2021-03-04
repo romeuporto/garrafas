@@ -12,7 +12,7 @@ class _PageHomeState extends State<PageHome> {
   TextEditingController _calcQuant = TextEditingController();
 
 
-  void exibirResult() {
+  void _exibirResult() {
     var result = _calcQuant.text;
     print("Digitado " + _calcQuant.text);
     bottleList = result.split(",").cast<double>();
@@ -21,6 +21,13 @@ class _PageHomeState extends State<PageHome> {
 
   List<double> bottleList = [];
 
+  void listFull (){
+    double garrafasVazias;
+    double garrafasGuardadas;
+    for (int i = 0; i <= bottleList.length; i++) {
+      print("Executar $bottleList");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +125,7 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      exibirResult();
+                      _exibirResult();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
