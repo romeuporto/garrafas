@@ -22,10 +22,15 @@ class _PageHomeState extends State<PageHome> {
   List<double> bottleList = [];
 
   void listFull (){
-    double garrafasVazias;
-    double garrafasGuardadas;
+
+    double galaoVazio;
+    double garrafasCheias;
+
     for (int i = 0; i <= bottleList.length; i++) {
       print("Executar $bottleList");
+
+      if(_calcQuant - bottleList.length >= 0){
+      }
     }
   }
 
