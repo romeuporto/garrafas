@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'PageHome.dart';
 
 class Result extends StatefulWidget {
+
+
   @override
   _ResultState createState() => _ResultState();
 }

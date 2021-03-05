@@ -147,7 +147,7 @@ class _PageHomeState extends State<PageHome> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (contexte) => Result()
+                              builder: (context) => Result()
                           )
                       );
                   },
