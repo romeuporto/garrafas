@@ -12,14 +12,15 @@ class _PageHomeState extends State<PageHome> {
   TextEditingController _calcQuant = TextEditingController();
 
 
-  void _exibirResult() {
-    var result = _calcQuant.text;
+  void exibirResult() {
+    var result = "";
     print("Digitado " + _calcQuant.text);
     bottleList = result.split(",").cast<double>();
     bottleList.sort((a, b) => b.compareTo(a));
   }
 
   List<double> bottleList = [];
+  var resposta = "";
 
   void listFull (){
 
@@ -29,8 +30,20 @@ class _PageHomeState extends State<PageHome> {
     for (int i = 0; i <= bottleList.length; i++) {
       print("Executar $bottleList");
 
-      if(_calcQuant - bottleList.length >= 0){
+      if(double.tryParse(_calcQuant.text) - double.tryParse(_calcLitros.text) >= 0){
+        bottleList.add(garrafasCheias);
+        galaoVazio = galaoVazio - garrafasCheias;
+      }else{
+        // não fez sentido fazer verificação pois a lista esta ordenada
+        galaoVazio = garrafasCheias;
       }
+      // se sobrou algo, usar galaoVazio, se não sobrou descartar ela
+      if(galaoVazio != 0){
+        bottleList.add(galaoVazio);
+      }else{
+        galaoVazio = 0;
+      }
+      resposta = "Resposta: $bottleList, sobre ${galaoVazio - garrafasCheias}L.";
     }
   }
 
@@ -130,7 +143,7 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      _exibirResult();
+                      exibirResult();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
