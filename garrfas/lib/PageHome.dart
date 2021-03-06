@@ -13,6 +13,8 @@ class _PageHomeState extends State<PageHome> {
 
   List<double> allList;
 
+
+
   void result() {
     var list = "";
     allList = list.split(",").cast<double>();
@@ -21,6 +23,17 @@ class _PageHomeState extends State<PageHome> {
   }
 
   String calcTotal(List<double> allList) {
+
+    String totalLiters;
+
+    setState(() {
+      totalLiters= _liters.text;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Result())
+      );
+    });
 
     var galao = _galao as double;
       var resultFinal;
@@ -144,12 +157,6 @@ class _PageHomeState extends State<PageHome> {
                     ),
                   onPressed: (){
                       result();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Result()
-                        )
-                    );
                   },
                 ),
               ),
