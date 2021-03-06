@@ -22,19 +22,11 @@ class _PageHomeState extends State<PageHome> {
     print("Digitado: " +_galao.text + _liters.text);
   }
 
+
+
   String calcTotal(List<double> allList) {
-
+    print("Resultado final: $calcTotal(allList)");
     String totalLiters;
-
-    setState(() {
-      totalLiters= _liters.text;
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Result())
-      );
-    });
-
     var galao = _galao as double;
       var resultFinal;
       var garrafaSobra;
@@ -156,7 +148,12 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      result();
+                      calcTotal(allList);
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => Result()
+                          )
+                      );
                   },
                 ),
               ),
