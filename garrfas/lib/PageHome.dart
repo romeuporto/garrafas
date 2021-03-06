@@ -20,9 +20,9 @@ class _PageHomeState extends State<PageHome> {
     print("Digitado: " +_galao.text + _liters.text);
   }
 
-  String calcTotal(double galao,
-      List<double> allList) {
+  String calcTotal(List<double> allList) {
 
+    var galao = _galao as double;
       var resultFinal;
       var garrafaSobra;
       List<double> garrafasUsadas = [];
@@ -143,6 +143,7 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
+                      result();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
