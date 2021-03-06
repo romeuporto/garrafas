@@ -8,44 +8,46 @@ class PageHome extends StatefulWidget {
 
 class _PageHomeState extends State<PageHome> {
 
-  TextEditingController _calcLitros = TextEditingController();
-  TextEditingController _calcQuant = TextEditingController();
+  TextEditingController _liters = TextEditingController();
+  TextEditingController _galao = TextEditingController();
 
+  List<double> allList;
 
-  void exibirResult() {
-    var result = "";
-    print("Digitado " + _calcQuant.text);
-    bottleList = result.split(",").cast<double>();
-    bottleList.sort((a, b) => b.compareTo(a));
+  void result() {
+    var list = "";
+    allList = list.split(",").cast<double>();
+    allList.sort((a, b) => b.compareTo(a));
   }
 
-  List<double> bottleList = [];
-  var resposta = "";
+  String calc(double galao,
+      List<double> allList) {
 
-  void listFull (){
+    var resultFinal = "";
+    List<double> allList = [];
 
-    double galaoVazio;
-    double garrafasCheias;
+    var garrafaEstoque;
 
-    for (int i = 0; i <= bottleList.length; i++) {
-      print("Executar $bottleList");
-
-      if(double.tryParse(_calcQuant.text) - double.tryParse(_calcLitros.text) >= 0){
-        bottleList.add(garrafasCheias);
-        galaoVazio = galaoVazio - garrafasCheias;
-      }else{
-        // não fez sentido fazer verificação pois a lista esta ordenada
-        galaoVazio = garrafasCheias;
+    void listFull() {
+      for (var garrafa in allList) {
+        if(galao - garrafa >= 0){
+          allList.add(garrafa);
+          galao = galao - garrafa;
+        }else{
+          garrafaEstoque = garrafa;
+        }
       }
-      // se sobrou algo, usar galaoVazio, se não sobrou descartar ela
-      if(galaoVazio != 0){
-        bottleList.add(galaoVazio);
+      if(galao != 0){
+        allList.add(garrafaEstoque);
       }else{
-        galaoVazio = 0;
+        garrafaEstoque = 0;
       }
-      resposta = "Resposta: $bottleList, sobre ${galaoVazio - garrafasCheias}L.";
     }
+    resultFinal = "reposta: $allList, sobra ${garrafaEstoque -galao}L.";
   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +72,7 @@ class _PageHomeState extends State<PageHome> {
         child: ListView(
           children: <Widget>[
             TextField(
-              controller: _calcLitros,
+              controller: _liters,
               cursorColor: Colors.white,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -95,7 +97,7 @@ class _PageHomeState extends State<PageHome> {
               height: 30,
             ),
             TextField(
-              controller: _calcQuant,
+              controller: _galao,
               cursorColor: Colors.white,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
@@ -143,13 +145,12 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      exibirResult();
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Result()
-                          )
-                      );
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Result()
+                        )
+                    );
                   },
                 ),
               ),
