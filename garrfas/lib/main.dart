@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import "package:garrfas/PageHome.dart";
 import 'PageHome.dart';
+import 'Result.dart';
 
 void main(){
   runApp(MaterialApp(

@@ -25,7 +25,7 @@ class _PageHomeState extends State<PageHome> {
 
 
   String calcTotal(List<double> allList) {
-    print("Resultado final: $calcTotal(allList)");
+    print("Resultado: $allList");
     String totalLiters;
     var galao = _galao as double;
       var resultFinal;
@@ -46,7 +46,9 @@ class _PageHomeState extends State<PageHome> {
         garrafaSobra = 0;
       }
       resultFinal = "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
-      return resultFinal;
+      return "A resposta é: $allList";
+
+
     }
 
 
