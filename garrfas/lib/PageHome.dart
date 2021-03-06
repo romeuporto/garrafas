@@ -17,34 +17,32 @@ class _PageHomeState extends State<PageHome> {
     var list = "";
     allList = list.split(",").cast<double>();
     allList.sort((a, b) => b.compareTo(a));
+    print("Digitado: " +_galao.text + _liters.text);
   }
 
-  String calc(double galao,
+  String calcTotal(double galao,
       List<double> allList) {
 
-    var resultFinal = "";
-    List<double> allList = [];
+      var resultFinal;
+      var garrafaSobra;
+      List<double> garrafasUsadas = [];
 
-    var garrafaEstoque;
-
-    void listFull() {
-      for (var garrafa in allList) {
-        if(galao - garrafa >= 0){
-          allList.add(garrafa);
-          galao = galao - garrafa;
+      for (var garrafas in allList) {
+        if (garrafas - galao >= 0) {
+          allList.add(garrafas);
+          galao = galao - garrafas;
         }else{
-          garrafaEstoque = garrafa;
+          garrafaSobra = garrafas;
         }
       }
       if(galao != 0){
-        allList.add(garrafaEstoque);
+        garrafasUsadas.add(garrafaSobra);
       }else{
-        garrafaEstoque = 0;
+        garrafaSobra = 0;
       }
+      resultFinal = "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
+      return resultFinal;
     }
-    resultFinal = "reposta: $allList, sobra ${garrafaEstoque -galao}L.";
-  }
-
 
 
 
@@ -82,7 +80,7 @@ class _PageHomeState extends State<PageHome> {
                       color: Colors.white
                   ),
                 ),
-                hintText: "Litros ex.: 1,5",
+                hintText: "Litros ex.: 1.5",
                 hintStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 18,
@@ -160,4 +158,5 @@ class _PageHomeState extends State<PageHome> {
       ),
     );
   }
+
 }
