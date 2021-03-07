@@ -1,4 +1,5 @@
 # garrafas
+Obs.: O desfio foi feito com aplicativo em Flutter, para rodar basta clonar o repositório e rodar a aplicação.
 
 Desafio criado com linguagem em Dart, usando Android Studio.
 Ao iniciar o aplicativo, aparecerá dois campos onde deve ser digitado de acordo com o exemplo abaixo:
