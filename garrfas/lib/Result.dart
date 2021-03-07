@@ -19,6 +19,9 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Resultado Final"),
+      ),
       body: Container(
         padding: EdgeInsets.all(30),
         decoration: BoxDecoration(
@@ -34,7 +37,12 @@ class _ResultState extends State<Result> {
         ),
         child: Center(
           child: Text(
-            widget.calcTotal
+            widget.calcTotal,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
