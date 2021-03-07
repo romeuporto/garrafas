@@ -3,6 +3,12 @@ import 'PageHome.dart';
 
 class Result extends StatefulWidget {
 
+
+  String calcTotal;
+  Result(this.calcTotal);
+
+
+
   @override
   _ResultState createState() => _ResultState();
 }
@@ -24,6 +30,11 @@ class _ResultState extends State<Result> {
                 Colors.lightBlue,
                 Colors.blue,
               ]
+          ),
+        ),
+        child: Center(
+          child: Text(
+            widget.calcTotal
           ),
         ),
       ),

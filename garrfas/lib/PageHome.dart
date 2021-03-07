@@ -11,33 +11,35 @@ class _PageHomeState extends State<PageHome> {
   TextEditingController _liters = TextEditingController();
   TextEditingController _galao = TextEditingController();
 
-  List<double> allList;
+  List<String> allList;
+
 
 
 
   void result() {
-    var list = "";
-    allList = list.split(",").cast<double>();
+    allList = _liters.text.split(",");
     allList.sort((a, b) => b.compareTo(a));
-    print("Digitado: " +_galao.text + _liters.text);
+    print(allList);
+
+    // allList = _liters.text.split(",").cast<double>();
+    // allList.sort((a, b) => b.compareTo(a));
   }
 
 
 
   String calcTotal() {
-    print("Resultado: $calcTotal");
-    String totalLiters;
-    var galao = _galao as double;
-      var resultFinal;
+      var galao = double.parse(_galao.text);
       var garrafaSobra;
       List<double> garrafasUsadas = [];
 
       for (var garrafas in allList) {
-        if (garrafas - galao >= 0) {
-          allList.add(garrafas);
-          galao = galao - garrafas;
+        var garrafaAtual = double.parse(garrafas);
+        print(garrafaAtual);
+        if (galao - garrafaAtual >= 0) {
+          garrafasUsadas.add(garrafaAtual);
+          galao = galao - garrafaAtual;
         }else{
-          garrafaSobra = garrafas;
+          garrafaSobra = garrafaAtual;
         }
       }
       if(galao != 0){
@@ -45,10 +47,8 @@ class _PageHomeState extends State<PageHome> {
       }else{
         garrafaSobra = 0;
       }
-      resultFinal = "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
-      return "A resposta é: $allList";
-
-    }
+      return "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
+  }
 
 
 
@@ -73,7 +73,7 @@ class _PageHomeState extends State<PageHome> {
               ]
           ),
         ),
-        child: ListView(
+        child: Column(
           children: <Widget>[
             TextField(
               controller: _liters,
@@ -111,7 +111,7 @@ class _PageHomeState extends State<PageHome> {
                       color: Colors.white
                   ),
                 ),
-                hintText: "Quatidade de Garrafas",
+                hintText: "Quatidade de Galão",
                 hintStyle: TextStyle(
                   color: Colors.white,
                   fontSize: 17,
@@ -149,10 +149,12 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                    calcTotal();
+                      result();
+                      var resultFinal = calcTotal();
+                      print(resultFinal);
                     Navigator.push(context,
                         MaterialPageRoute(
-                          builder: (context) => Result(),
+                          builder: (context) => Result(resultFinal),
                         )
                     );
                   },
