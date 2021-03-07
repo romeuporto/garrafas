@@ -24,7 +24,7 @@ class _PageHomeState extends State<PageHome> {
 
 
 
-  String calcTotal(List<double> allList) {
+  String calcTotal() {
     print("Resultado: $allList");
     String totalLiters;
     var galao = _galao as double;
@@ -47,7 +47,6 @@ class _PageHomeState extends State<PageHome> {
       }
       resultFinal = "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
       return "A resposta é: $allList";
-
 
     }
 
@@ -150,7 +149,7 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      calcTotal(allList);
+                      calcTotal();
                       Navigator.push(context,
                           MaterialPageRoute(
                               builder: (context) => Result()
