@@ -24,7 +24,7 @@ class _PageHomeState extends State<PageHome> {
 
 
 
-  String calcTotal(List<double> allList) {
+  String calcTotal() {
     print("Resultado final: $calcTotal(allList)");
     String totalLiters;
     var galao = _galao as double;
