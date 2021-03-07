@@ -13,18 +13,10 @@ class _PageHomeState extends State<PageHome> {
 
   List<String> allList;
 
-
-
-
   void result() {
     allList = _liters.text.split(",");
     allList.sort((a, b) => b.compareTo(a));
-    print(allList);
-
-    // allList = _liters.text.split(",").cast<double>();
-    // allList.sort((a, b) => b.compareTo(a));
   }
-
 
 
   String calcTotal() {
@@ -47,11 +39,8 @@ class _PageHomeState extends State<PageHome> {
       }else{
         garrafaSobra = 0;
       }
-      return "Resposta: $garrafasUsadas; sobra ${garrafaSobra - galao}L.";
+      return "Resposta: $garrafasUsadas; Sobra ${garrafaSobra - galao}L.";
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +112,7 @@ class _PageHomeState extends State<PageHome> {
                           color: Colors.white
                       ),
                     ),
-                    hintText: "Quatidade de Galão",
+                    hintText: "Galão",
                     hintStyle: TextStyle(
                       color: Colors.white,
                       fontSize: 17,
@@ -163,7 +152,6 @@ class _PageHomeState extends State<PageHome> {
                       onPressed: (){
                         result();
                         var resultFinal = calcTotal();
-                        print(resultFinal);
                         Navigator.push(context,
                             MaterialPageRoute(
                               builder: (context) => Result(resultFinal),
@@ -205,5 +193,4 @@ class _PageHomeState extends State<PageHome> {
       ),
     );
   }
-
 }
