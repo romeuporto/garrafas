@@ -25,7 +25,7 @@ class _PageHomeState extends State<PageHome> {
 
 
   String calcTotal() {
-    print("Resultado: $allList");
+    print("Resultado: $calcTotal");
     String totalLiters;
     var galao = _galao as double;
       var resultFinal;
@@ -149,12 +149,12 @@ class _PageHomeState extends State<PageHome> {
                       ],
                     ),
                   onPressed: (){
-                      calcTotal();
-                      Navigator.push(context,
-                          MaterialPageRoute(
-                              builder: (context) => Result()
-                          )
-                      );
+                    calcTotal();
+                    Navigator.push(context,
+                        MaterialPageRoute(
+                          builder: (context) => Result(),
+                        )
+                    );
                   },
                 ),
               ),
