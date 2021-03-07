@@ -20,7 +20,13 @@ class _ResultState extends State<Result> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Resultado Final"),
+        backgroundColor: Colors.lightBlue,
+        title: Text("Resultado Final",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: Container(
         padding: EdgeInsets.all(30),
@@ -39,7 +45,7 @@ class _ResultState extends State<Result> {
           child: Text(
             widget.calcTotal,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 30,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),

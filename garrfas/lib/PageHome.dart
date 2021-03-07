@@ -56,14 +56,19 @@ class _PageHomeState extends State<PageHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
       appBar: AppBar(
-        title: Text("Desafio YESLIST"),
+        backgroundColor: Colors.lightBlue,
+        title: Text("Desafio YESLIST",
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
+        ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(
-            // top: 32,
+            top: 100,
             right: 40,
             left: 40,
           ),
@@ -169,7 +174,7 @@ class _PageHomeState extends State<PageHome> {
                   ),
                 ),
                 SizedBox(
-                  height: 12,
+                  height: 20,
                 ),
                 Text(
                   "Obs.: O primeiro campo deve ser digitado separando cada valor da garrafa por vírgulas, ou seja, seguindo o exemplo: 1.5, 2, 3.5",
@@ -180,7 +185,7 @@ class _PageHomeState extends State<PageHome> {
                   ),
                 ),
                 SizedBox(
-                  height: 12,
+                  height: 20,
                 ),
                 Text(
                   "Obs.:   O Segundo campo deve conter um valor único, inteiro ou double exemplo: 2.5 ou 5",
@@ -189,6 +194,9 @@ class _PageHomeState extends State<PageHome> {
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
+                ),
+                SizedBox(
+                  height: 110,
                 ),
               ],
             ),
